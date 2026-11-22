@@ -18,6 +18,7 @@ img {
   --white: #ffffff;
   --black: #121212;
   --oat-milk: #eee5d4;
+  --light-oat-milk: #f5f0e6;
   --forest-green: #1d4a35;
   --tomato-red: #f2462e;
 }
@@ -31,3 +32,4 @@ img {
   width: 64px;
   height: 64px;
 }
+

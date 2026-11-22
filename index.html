@@ -12,8 +12,9 @@
     />
     <!-- TAILWIND -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- STYLE -->
-    <link rel="stylesheet" href="./style.css" />
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
     <!-- SCRIPT -->
     <script src="./app.js" defer></script>
     <title>Task Management App</title>
@@ -21,15 +22,51 @@
   <body class="min-h-screen flex justify-center items-center">
     <main class="w-full flex justify-center items-center">
       <div class="container p-6">
-        <div class="flex items-center gap-2">
-          <svg class="icon" aria-hidden="true">
-            <use href="./assets/sprite.svg#icon-square-check" />
-          </svg>
-          <div class="flex flex-col align-center">
-            <h1 class="text-3xl font-bold">Task Manager</h1>
-            <p>Add, track and orgonize your tasks</p>
+        <header class="header flex justify-between items-center">
+          <!-- LOGO -->
+          <div class="flex items-center gap-2">
+            <svg class="icon" aria-hidden="true">
+              <use href="./assets/sprite.svg#icon-square-check" />
+            </svg>
+            <div class="flex flex-col align-center">
+              <h1 class="text-3xl font-bold">Task Manager</h1>
+              <p>Add, track and orgonize your tasks</p>
+            </div>
           </div>
-        </div>
+          <!-- BOARD -->
+          <div class="task__board border border-neutral-400 p-2 rounded-2xl">
+            <ul class="task__board-list flex gap-4">
+              <li
+                class="task__board-list-item flex flex-col items-center min-w-22"
+              >
+                <div class="task__category">All</div>
+                <div class="task__count text-xl font-bold">6</div>
+              </li>
+              <li
+                class="task__board-list-item flex flex-col items-center min-w-22"
+              >
+                <div class="task__category">In Progress</div>
+                <div class="task__count text-xl font-bold text-amber-600">
+                  2
+                </div>
+              </li>
+              <li
+                class="task__board-list-item flex flex-col items-center min-w-22"
+              >
+                <div class="task__category">Completed</div>
+                <div class="task__count text-xl font-bold text-green-700">
+                  3
+                </div>
+              </li>
+              <li
+                class="task__board-list-item flex flex-col items-center min-w-22"
+              >
+                <div class="task__category">Overdue</div>
+                <div class="task__count text-xl font-bold text-red-600">1</div>
+              </li>
+            </ul>
+          </div>
+        </header>
       </div>
     </main>
   </body>
