@@ -10,12 +10,27 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- TAILWIND -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- STYLE -->
     <link rel="stylesheet" href="./style.css" />
-
     <!-- SCRIPT -->
     <script src="./app.js" defer></script>
     <title>Task Management App</title>
   </head>
-  <body></body>
+  <body class="min-h-screen flex justify-center items-center">
+    <main class="w-full flex justify-center items-center">
+      <div class="container p-6">
+        <div class="flex items-center gap-2">
+          <svg class="icon" aria-hidden="true">
+            <use href="./assets/sprite.svg#icon-square-check" />
+          </svg>
+          <div class="flex flex-col align-center">
+            <h1 class="text-3xl font-bold">Task Manager</h1>
+            <p>Add, track and orgonize your tasks</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

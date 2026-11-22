@@ -5,6 +5,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  color: var(--forest-green);
 }
 
 img {
@@ -16,8 +17,17 @@ img {
   /* Colors */
   --white: #ffffff;
   --black: #121212;
-  --purple-100: #dbd1fc;
-  --purple-500: #7551dc;
-  --yellow-100: #f9eee2;
-  --yellow-500: #ffcc6a;
+  --oat-milk: #eee5d4;
+  --forest-green: #1d4a35;
+  --tomato-red: #f2462e;
+}
+
+.container {
+  background-color: var(--oat-milk);
+  border-radius: 1.5rem;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
 }
