@@ -1,6 +1,9 @@
 .select {
   appearance: none;
   cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 select option {
@@ -8,10 +11,12 @@ select option {
   background-color: white;
   color: #262626;
 }
-
-select:focus-visible,
 select:hover {
-  outline-width: 2px;
-  outline-style: solid;
-  outline-color: var(--tomato-red);
+  border-color: var(--tomato-red);
+}
+
+select:focus-visible {
+  outline: none;
+  border-color: var(--tomato-red);
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.15);
 }
