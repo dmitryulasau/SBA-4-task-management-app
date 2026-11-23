@@ -1,0 +1,10 @@
+.btn {
+  background-color: var(--tomato-red);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.btn:hover {
+  background-color: var(--tomato-red-hover);
+}

@@ -1,0 +1,17 @@
+.select {
+  appearance: none;
+  cursor: pointer;
+}
+
+select option {
+  padding: 8px;
+  background-color: white;
+  color: #262626;
+}
+
+select:focus-visible,
+select:hover {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--tomato-red);
+}

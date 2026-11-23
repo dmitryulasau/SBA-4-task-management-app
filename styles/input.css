@@ -1,0 +1,25 @@
+input {
+  color: var(--black);
+}
+
+input[type="date"] {
+  color: var(--forest-green);
+}
+
+input[type="date"]::-webkit-datetime-edit {
+  color: var(--forest-green);
+  cursor: auto;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  color: var(--forest-green);
+  filter: invert(50%);
+}
+
+input:focus-visible,
+input:hover {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--tomato-red);
+}
