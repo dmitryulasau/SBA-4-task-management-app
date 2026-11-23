@@ -107,13 +107,13 @@
               </div>
             </div>
             <!-- DEADLINE -->
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col gap-1 min-w-0">
               <label for="deadline" class="text-sm font-semibold">Deadline</label>
               <input
                 id="deadline"
                 name="deadline"
                 type="date"
-                class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm px-3"
+                class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm px-3 min-w-0 max-w-full appearabce-none"
               />
             </div>
             <!-- STATUS -->
@@ -200,7 +200,7 @@
             </svg>
           </div>
           <!-- SEARCH -->
-          <div class="relative ml-auto w-100 max-[789px]:w-60">
+          <div class="relative ml-auto w-100 max-[789px]:w-full">
             <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
               <use href="./assets/sprite.svg#icon-search" />
             </svg>
