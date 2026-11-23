@@ -59,9 +59,10 @@
             </ul>
           </div>
         </header>
-        <section class="add-task p-6 bg-white rounded-2xl shadow-xl">
+        <!-- ADD NEW TASK -->
+        <section class="add-task p-6 bg-white rounded-2xl shadow-xl mb-10">
           <h2 class="text-lg font-bold mb-3">Add New Task</h2>
-          <form class="grid grid-cols-[6fr_1fr_1fr_1fr_auto] gap-4 items-center">
+          <form class="grid grid-cols-[4fr_1fr_1fr_1fr_auto] gap-4 items-center">
             <!-- TASK NAME -->
             <div class="flex flex-col gap-1">
               <label for="task-name" class="text-sm font-semibold">Task Name</label>
@@ -78,11 +79,18 @@
             <div class="flex flex-col gap-1">
               <label for="category" class="text-sm font-semibold">Category</label>
               <div class="relative">
+                <svg
+                  class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2"
+                  aria-hidden="true"
+                >
+                  <use href="./assets/sprite.svg#icon-work" />
+                </svg>
                 <select
                   id="category"
                   name="category"
-                  class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select px-3 pr-10"
+                  class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10"
                 >
+                  <option value="none">No Category</option>
                   <option value="health">Health</option>
                   <option value="personal">Personal</option>
                   <option value="study">Study</option>
@@ -111,14 +119,20 @@
             <div class="flex flex-col gap-1">
               <label for="status" class="text-sm font-semibold">Status</label>
               <div class="relative">
+                <svg
+                  class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2"
+                  aria-hidden="true"
+                >
+                  <use href="./assets/sprite.svg#icon-info" />
+                </svg>
                 <select
                   id="status"
                   name="status"
-                  class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select px-3 pr-10"
+                  class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10"
                 >
-                  <option value="completed">Completed</option>
                   <option value="progress">In Progress</option>
                   <option value="overdue">Overdue</option>
+                  <option value="completed">Completed</option>
                 </select>
                 <svg
                   class="icon pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400"
@@ -136,6 +150,67 @@
               <span>Add Task</span>
             </button>
           </form>
+        </section>
+        <!-- FILTER & SEARCH -->
+        <section class="flex gap-4 mb-10">
+          <div class="relative w-48">
+            <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
+              <use href="./assets/sprite.svg#icon-category" />
+            </svg>
+            <select
+              id="filter-category"
+              name="filter-category"
+              class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10"
+            >
+              <option value="all">All Categories</option>
+              <option value="health">Health</option>
+              <option value="personal">Personal</option>
+              <option value="study">Study</option>
+              <option value="travel">Travel</option>
+              <option value="work">Work</option>
+            </select>
+            <svg
+              class="icon pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400"
+              aria-hidden="true"
+            >
+              <use href="./assets/sprite.svg#icon-chevron-down" />
+            </svg>
+          </div>
+          <!-- STATUS FILTER -->
+          <div class="relative w-48">
+            <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
+              <use href="./assets/sprite.svg#icon-activity" />
+            </svg>
+            <select
+              id="filter-status"
+              name="filter-status"
+              class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10"
+            >
+              <option value="all">All Statuses</option>
+              <option value="progress">In Progress</option>
+              <option value="completed">Completed</option>
+              <option value="overdue">Overdue</option>
+            </select>
+            <svg
+              class="icon pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400"
+              aria-hidden="true"
+            >
+              <use href="./assets/sprite.svg#icon-chevron-down" />
+            </svg>
+          </div>
+          <!-- SEARCH -->
+          <div class="relative ml-auto w-100">
+            <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
+              <use href="./assets/sprite.svg#icon-search" />
+            </svg>
+            <input
+              id="search"
+              name="search"
+              type="search"
+              placeholder="Search tasks..."
+              class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm pl-11 pr-3"
+            />
+          </div>
         </section>
       </div>
     </main>
