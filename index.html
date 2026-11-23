@@ -12,6 +12,7 @@
     />
     <!-- TAILWIND -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <!-- STYLES -->
     <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/btn.css" />
@@ -26,9 +27,9 @@
     <main class="w-full flex justify-center items-center">
       <div class="container p-6">
         <!-- HEADER -->
-        <header class="header flex justify-between items-center mb-10">
+        <header class="header flex justify-between items-center mb-10 max-[768px]:flex-col">
           <!-- LOGO -->
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 mb-6">
             <svg class="icon-big" aria-hidden="true">
               <use href="./assets/sprite.svg#icon-square-check" />
             </svg>
@@ -40,20 +41,20 @@
           <!-- BOARD -->
           <div class="task__board border border-neutral-400 p-2 rounded-2xl">
             <ul class="task__board-list flex gap-4">
-              <li class="task__board-list-item flex flex-col items-center min-w-22">
-                <div class="task__category">All</div>
+              <li class="task__board-list-item flex flex-col items-center min-w-22 max-[768px]:min-w-16">
+                <div class="task__category max-[768px]:text-xs">All</div>
                 <div class="task__count text-xl font-bold">6</div>
               </li>
-              <li class="task__board-list-item flex flex-col items-center min-w-22">
-                <div class="task__category">In Progress</div>
+              <li class="task__board-list-item flex flex-col items-center min-w-22 max-[768px]:min-w-16">
+                <div class="task__category max-[768px]:text-xs">In Progress</div>
                 <div class="task__count text-xl font-bold text-amber-600">2</div>
               </li>
-              <li class="task__board-list-item flex flex-col items-center min-w-22">
-                <div class="task__category">Completed</div>
+              <li class="task__board-list-item flex flex-col items-center min-w-22 max-[768px]:min-w-16">
+                <div class="task__category max-[768px]:text-xs">Completed</div>
                 <div class="task__count text-xl font-bold text-green-700">3</div>
               </li>
-              <li class="task__board-list-item flex flex-col items-center min-w-22">
-                <div class="task__category">Overdue</div>
+              <li class="task__board-list-item flex flex-col items-center min-w-22 max-[768px]:min-w-16">
+                <div class="task__category max-[768px]:text-xs">Overdue</div>
                 <div class="task__count text-xl font-bold text-red-600">1</div>
               </li>
             </ul>
@@ -62,7 +63,7 @@
         <!-- ADD NEW TASK -->
         <section class="add-task p-6 bg-white rounded-2xl shadow-xl mb-10">
           <h2 class="text-lg font-bold mb-3">Add New Task</h2>
-          <form class="grid grid-cols-[4fr_1fr_1fr_1fr_auto] gap-4 items-center">
+          <form class="grid grid-cols-[4fr_1fr_1fr_1fr_auto] gap-4 items-center max-[768px]:grid-cols-[1fr]">
             <!-- TASK NAME -->
             <div class="flex flex-col gap-1">
               <label for="task-name" class="text-sm font-semibold">Task Name</label>
@@ -152,15 +153,15 @@
           </form>
         </section>
         <!-- FILTER & SEARCH -->
-        <section class="flex gap-4 mb-10">
-          <div class="relative w-48">
+        <section class="flex flex-wrap gap-4 mb-10 max-[768px]:gap-2">
+          <div class="relative w-48 max-[768px]:w-38">
             <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
               <use href="./assets/sprite.svg#icon-category" />
             </svg>
             <select
               id="filter-category"
               name="filter-category"
-              class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10"
+              class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10 max-[768px]:text-xs max-[768px]:pl-10 max-[768px]:pr-9"
             >
               <option value="all">All Categories</option>
               <option value="health">Health</option>
@@ -177,14 +178,14 @@
             </svg>
           </div>
           <!-- STATUS FILTER -->
-          <div class="relative w-48">
+          <div class="relative w-48 max-[768px]:w-38">
             <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
               <use href="./assets/sprite.svg#icon-activity" />
             </svg>
             <select
               id="filter-status"
               name="filter-status"
-              class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10"
+              class="h-10 w-full rounded-xl border border-neutral-400 bg-white text-sm select pl-11 pr-10 max-[768px]:text-xs max-[768px]:pl-10 max-[768px]:pr-9"
             >
               <option value="all">All Statuses</option>
               <option value="progress">In Progress</option>
@@ -199,7 +200,7 @@
             </svg>
           </div>
           <!-- SEARCH -->
-          <div class="relative ml-auto w-100">
+          <div class="relative ml-auto w-100 max-[789px]:w-60">
             <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
               <use href="./assets/sprite.svg#icon-search" />
             </svg>
@@ -215,9 +216,9 @@
 
         <!-- TASK TABLE -->
         <section class="rounded-2xl mb-10 border border-neutral-400 bg-white shadow-xl overflow-hidden">
-          <table class="w-full text-left text-sm">
+          <table class="w-full text-left text-sm max-[768px]:block">
             <!-- TABLE LAYOUT -->
-            <colgroup>
+            <colgroup class="max-[768px]:hidden">
               <col class="" />
               <col class="w-5/12" />
               <col class="" />
@@ -226,7 +227,7 @@
               <col class="" />
             </colgroup>
             <!-- TABLE HEAD -->
-            <thead class="bg-neutral-100 font-semibold">
+            <thead class="bg-neutral-100 font-semibold max-[768px]:hidden">
               <tr>
                 <th class="px-4 py-3"></th>
                 <th class="px-4 py-3">Task</th>
@@ -237,17 +238,23 @@
               </tr>
             </thead>
             <!-- TABLE BODY -->
-            <tbody class="divide-y divide-neutral-200">
+            <tbody class="divide-y divide-neutral-200 max-[768px]:block">
               <!-- ROW 1 -->
-              <tr>
+              <tr
+                class="max-[768px]:grid max-[768px]:grid-cols-[auto_1fr_auto] max-[768px]:items-center max-[768px]:gap-x-3 max-[768px]:gap-y-2 max-[768px]:p-4"
+              >
                 <!-- CHECKBOX -->
-                <td class="px-4 py-3">
+                <td class="px-4 py-3 max-[768px]:p-0 max-[768px]:justify-end">
                   <input type="checkbox" class="size-5 cursor-pointer rounded-md border border-neutral-400" />
                 </td>
                 <!-- TASK -->
-                <td class="px-4 py-3 text-lg font-bold max-w-xl">Update resume</td>
+                <td class="px-4 py-3 text-lg font-bold max-w-xl max-[768px]:p-0 max-[768px]:break-words">
+                  Update resume
+                </td>
                 <!-- CATEGORY -->
-                <td class="px-4 py-3 text-lg font-bold">
+                <td
+                  class="px-4 py-3 text-lg font-bold max-[768px]:col-span-2 max-[768px]:col-start-2 max-[768px]:p-0 max-[768px]:text-base"
+                >
                   <span class="inline-flex items-center gap-2 bg-sky-200 rounded-lg px-2 py-1">
                     <svg class="icon" aria-hidden="true">
                       <use href="./assets/sprite.svg#icon-job" />
@@ -256,16 +263,18 @@
                   </span>
                 </td>
                 <!-- DEADLINE -->
-                <td class="px-4 py-3 text-lg font-bold">
+                <td
+                  class="px-4 py-3 text-lg font-bold max-[768px]:col-span-2 max-[768px]:col-start-2 max-[768px]:p-0 max-[768px]:text-base"
+                >
                   <span class="inline-flex items-center gap-2 px-2 py-1">
-                    <svg class="icon" aria-hidden="true">
+                    <svg class="icon max-[1280px]:hidden" aria-hidden="true">
                       <use href="./assets/sprite.svg#icon-calendar" />
                     </svg>
                     <time datetime="2026-11-25">Nov 25, 2026</time>
                   </span>
                 </td>
                 <!-- STATUS -->
-                <td class="px-4 py-3 text-lg font-bold">
+                <td class="px-4 py-3 text-lg font-bold max-[768px]:col-span-2 max-[768px]:col-start-2 max-[768px]:p-0">
                   <div class="relative w-40">
                     <svg
                       class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2"
@@ -291,7 +300,9 @@
                   </div>
                 </td>
                 <!-- ACTIONS -->
-                <td class="px-4 py-3 w-32">
+                <td
+                  class="px-4 py-3 w-32 max-[768px]:col-start-3 max-[768px]:row-start-1 max-[768px]:w-auto max-[768px]:p-0"
+                >
                   <div class="flex items-center justify-between">
                     <button
                       type="button"
