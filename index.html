@@ -212,6 +212,176 @@
             />
           </div>
         </section>
+
+        <!-- TASK TABLE -->
+        <section class="rounded-2xl mb-10 border border-neutral-400 bg-white shadow-xl overflow-hidden">
+          <table class="w-full text-left text-sm">
+            <!-- TABLE LAYOUT -->
+            <colgroup>
+              <col class="" />
+              <col class="w-5/12" />
+              <col class="" />
+              <col class="" />
+              <col class="" />
+              <col class="" />
+            </colgroup>
+            <!-- TABLE HEAD -->
+            <thead class="bg-neutral-100 font-semibold">
+              <tr>
+                <th class="px-4 py-3"></th>
+                <th class="px-4 py-3">Task</th>
+                <th class="px-4 py-3">Category</th>
+                <th class="px-4 py-3">Deadline</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3">Actions</th>
+              </tr>
+            </thead>
+            <!-- TABLE BODY -->
+            <tbody class="divide-y divide-neutral-200">
+              <!-- ROW 1 -->
+              <tr>
+                <!-- CHECKBOX -->
+                <td class="px-4 py-3">
+                  <input type="checkbox" class="size-5 cursor-pointer rounded-md border border-neutral-400" />
+                </td>
+                <!-- TASK -->
+                <td class="px-4 py-3 text-lg font-bold max-w-xl">Update resume</td>
+                <!-- CATEGORY -->
+                <td class="px-4 py-3 text-lg font-bold">
+                  <span class="inline-flex items-center gap-2 bg-sky-200 rounded-lg px-2 py-1">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="./assets/sprite.svg#icon-job" />
+                    </svg>
+                    Work
+                  </span>
+                </td>
+                <!-- DEADLINE -->
+                <td class="px-4 py-3 text-lg font-bold">
+                  <span class="inline-flex items-center gap-2 px-2 py-1">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="./assets/sprite.svg#icon-calendar" />
+                    </svg>
+                    <time datetime="2026-11-25">Nov 25, 2026</time>
+                  </span>
+                </td>
+                <!-- STATUS -->
+                <td class="px-4 py-3 text-lg font-bold">
+                  <div class="relative w-40">
+                    <svg
+                      class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2"
+                      aria-hidden="true"
+                    >
+                      <use href="./assets/sprite.svg#icon-progress" />
+                    </svg>
+                    <select
+                      id="task-status"
+                      name="filter-status"
+                      class="h-10 w-full rounded-xl border border-amber-400 bg-amber-100 text-sm select pl-11 pr-10"
+                    >
+                      <option value="progress" selected>In Progress</option>
+                      <option value="completed">Completed</option>
+                      <option value="overdue">Overdue</option>
+                    </select>
+                    <svg
+                      class="icon pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400"
+                      aria-hidden="true"
+                    >
+                      <use href="./assets/sprite.svg#icon-chevron-down" />
+                    </svg>
+                  </div>
+                </td>
+                <!-- ACTIONS -->
+                <td class="px-4 py-3 w-32">
+                  <div class="flex items-center justify-between">
+                    <button
+                      type="button"
+                      class="cursor-pointer hover:text-blue-400 px-2 py-1 bg-neutral-100 rounded-lg"
+                    >
+                      <svg class="icon size-5" aria-hidden="true"><use href="./assets/sprite.svg#icon-edit" /></svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Delete task"
+                      class="cursor-pointer hover:text-red-600 px-2 py-1 bg-neutral-100 rounded-lg"
+                    >
+                      <svg class="icon size-5" aria-hidden="true"><use href="./assets/sprite.svg#icon-delete" /></svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- ROW 2 -->
+              <tr>
+                <!-- CHECKBOX -->
+                <td class="px-4 py-3">
+                  <input type="checkbox" class="size-5 cursor-pointer rounded-md border border-neutral-400" />
+                </td>
+                <!-- TASK -->
+                <td class="px-4 py-3 text-lg font-bold max-w-xl">Buy milk</td>
+                <!-- CATEGORY -->
+                <td class="px-4 py-3 text-lg font-bold">
+                  <span class="inline-flex items-center gap-2 bg-orange-200 rounded-lg px-2 py-1">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="./assets/sprite.svg#icon-shopping" />
+                    </svg>
+                    Shopping
+                  </span>
+                </td>
+                <!-- DEADLINE -->
+                <td class="px-4 py-3 text-lg font-bold">
+                  <span class="inline-flex items-center gap-2 px-2 py-1">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="./assets/sprite.svg#icon-calendar" />
+                    </svg>
+                    <time datetime="2026-11-25">Nov 25, 2026</time>
+                  </span>
+                </td>
+                <!-- STATUS -->
+                <td class="px-4 py-3 text-lg font-bold">
+                  <div class="relative w-40">
+                    <svg
+                      class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2"
+                      aria-hidden="true"
+                    >
+                      <use href="./assets/sprite.svg#icon-completed" />
+                    </svg>
+                    <select
+                      name="filter-status"
+                      class="h-10 w-full rounded-xl border border-green-400 bg-green-100 text-sm select pl-11 pr-10"
+                    >
+                      <option value="progress">In Progress</option>
+                      <option value="completed" selected>Completed</option>
+                      <option value="overdue">Overdue</option>
+                    </select>
+                    <svg
+                      class="icon pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400"
+                      aria-hidden="true"
+                    >
+                      <use href="./assets/sprite.svg#icon-chevron-down" />
+                    </svg>
+                  </div>
+                </td>
+                <!-- ACTIONS -->
+                <td class="px-4 py-3 w-32">
+                  <div class="flex items-center justify-between">
+                    <button
+                      type="button"
+                      class="cursor-pointer hover:text-blue-400 px-2 py-1 bg-neutral-100 rounded-lg"
+                    >
+                      <svg class="icon size-5" aria-hidden="true"><use href="./assets/sprite.svg#icon-edit" /></svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Delete task"
+                      class="cursor-pointer hover:text-red-600 px-2 py-1 bg-neutral-100 rounded-lg"
+                    >
+                      <svg class="icon size-5" aria-hidden="true"><use href="./assets/sprite.svg#icon-delete" /></svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </div>
     </main>
   </body>
