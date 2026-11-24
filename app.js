@@ -85,7 +85,7 @@ function createRow(taskText, categoryValue, deadlineValue) {
         <svg class="icon pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true">
           <use class="status-use" href="./assets/sprite.svg#icon-progress" />
         </svg>
-        <select name="filter-status" class="status-select">
+        <select class="status-select">
           <option value="progress" selected>In Progress</option>
           <option value="completed">Completed</option>
           <option value="overdue">Overdue</option>
@@ -122,7 +122,7 @@ function addRow(task) {
   const row = createRow(task.text, task.category, task.deadline);
   row.dataset.id = task.id;
   const select = row.querySelector(".status-select");
-  select.value = task.status;
+  select.value = statuses[task.status] ? task.status : "progress";
   updateStatus(select);
 
   tbody.appendChild(row);
@@ -145,8 +145,7 @@ addTaskButton.addEventListener("click", (e) => {
 
   tasks.push(task);
   saveTasks();
-  addRow(task);
-  updateTaskCouts();
+  renderTasks();
 
   taskInput.value = "";
   deadlineInput.value = "";
@@ -161,53 +160,67 @@ tbody.addEventListener("click", (e) => {
   const row = deleteButton.closest("tr");
   tasks = tasks.filter((t) => t.id !== Number(row.dataset.id));
   saveTasks();
-
-  row.remove();
-  updateTaskCouts();
+  renderTasks();
 });
 
 // CHANGE STATUS
 tbody.addEventListener("change", (e) => {
+  if (!e.target.matches(".status-select")) return;
+
   const select = e.target;
   const row = select.closest("tr");
   const id = Number(row.dataset.id);
   const task = tasks.find((t) => t.id === id);
   task.status = select.value;
   saveTasks();
-  updateStatus(select);
-  updateTaskCouts();
+  renderTasks();
 });
 
 // TASK COUNT
 function updateTaskCouts() {
-  const selects = tbody.querySelectorAll(".status-select");
-
-  let all = 0;
   let progress = 0;
   let completed = 0;
   let overdue = 0;
 
-  for (let select of selects) {
-    if (select.value === "progress") {
-      progress += 1;
-    }
-    if (select.value === "completed") {
-      completed += 1;
-    }
-    if (select.value === "overdue") {
-      overdue += 1;
-    }
+  for (const task of tasks) {
+    if (task.status === "progress") progress += 1;
+    if (task.status === "completed") completed += 1;
+    if (task.status === "overdue") overdue += 1;
   }
 
-  all = progress + completed + overdue;
-
-  document.getElementById("count-all").textContent = all;
+  document.getElementById("count-all").textContent = tasks.length;
   document.getElementById("count-progress").textContent = progress;
   document.getElementById("count-completed").textContent = completed;
   document.getElementById("count-overdue").textContent = overdue;
 }
 
-for (const task of tasks) {
-  addRow(task);
+// FILTERS
+const filterCategory = document.getElementById("filter-category");
+const filterStatus = document.getElementById("filter-status");
+const searchInput = document.getElementById("search");
+
+function renderTasks() {
+  const category = filterCategory.value;
+  const status = filterStatus.value;
+  const search = searchInput.value.toLowerCase();
+
+  tbody.innerHTML = "";
+
+  for (const task of tasks) {
+    const categoryMatch = category === "all" || task.category === category;
+    const statusMatch = status === "all" || task.status === status;
+    const searchMatch = task.text.toLowerCase().includes(search);
+
+    if (categoryMatch && statusMatch && searchMatch) {
+      addRow(task);
+    }
+  }
+
+  updateTaskCouts();
 }
-updateTaskCouts();
+
+filterCategory.addEventListener("change", renderTasks);
+filterStatus.addEventListener("change", renderTasks);
+searchInput.addEventListener("input", renderTasks);
+
+renderTasks();
