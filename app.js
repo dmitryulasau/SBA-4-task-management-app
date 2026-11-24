@@ -123,6 +123,7 @@ addTaskButton.addEventListener("click", (e) => {
 
   const row = createRow(taskText, categorySelect.value, deadlineInput.value);
   tbody.appendChild(row);
+  updateTaskCouts();
 
   taskInput.value = "";
   deadlineInput.value = "";
@@ -132,9 +133,46 @@ addTaskButton.addEventListener("click", (e) => {
 // DELETE TASK
 tbody.addEventListener("click", (e) => {
   const deleteButton = e.target.closest(".btn-delete");
+  if (!deleteButton) return;
   deleteButton.closest("tr").remove();
+  updateTaskCouts();
 });
 
 tbody.addEventListener("change", (e) => {
-  if (e.target.matches(".status-select")) updateStatus(e.target);
+  if (e.target.matches(".status-select")) {
+    updateStatus(e.target);
+  }
+
+  updateTaskCouts();
 });
+
+// TASK COUNT
+function updateTaskCouts() {
+  const selects = tbody.querySelectorAll(".status-select");
+
+  let all = 0;
+  let progress = 0;
+  let completed = 0;
+  let overdue = 0;
+
+  for (let select of selects) {
+    if (select.value === "progress") {
+      progress += 1;
+    }
+    if (select.value === "completed") {
+      completed += 1;
+    }
+    if (select.value === "overdue") {
+      overdue += 1;
+    }
+  }
+
+  all = progress + completed + overdue;
+
+  document.getElementById("count-all").textContent = all;
+  document.getElementById("count-progress").textContent = progress;
+  document.getElementById("count-completed").textContent = completed;
+  document.getElementById("count-overdue").textContent = overdue;
+}
+
+updateTaskCouts();
