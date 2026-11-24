@@ -6,6 +6,13 @@ const tbody = document.getElementById("table-body");
 
 tbody.className = "divide-y divide-neutral-200 max-[768px]:block";
 
+// LOCAL STORAGE
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 const categories = {
   no_category: { label: "No Category", icon: "icon-category", color: "bg-neutral-200" },
   health: { label: "Health", icon: "icon-health", color: "bg-red-200" },
@@ -26,10 +33,6 @@ const statusClasses = "status-select h-10 w-full rounded-xl border text-sm selec
 function updateStatus(select) {
   const status = statuses[select.value];
   const icon = select.parentElement.querySelector(".status-use");
-
-  console.log(select);
-  console.log(select.parentElement);
-  console.log(select.parentElement.querySelector(".status-use"));
 
   icon.setAttribute("href", `./assets/sprite.svg#${status.icon}`);
   select.className = `${statusClasses} ${status.color}`;
@@ -115,14 +118,34 @@ function createRow(taskText, categoryValue, deadlineValue) {
   return tr;
 }
 
+function addRow(task) {
+  const row = createRow(task.text, task.category, task.deadline);
+  row.dataset.id = task.id;
+  const select = row.querySelector(".status-select");
+  select.value = task.status;
+  updateStatus(select);
+
+  tbody.appendChild(row);
+}
+
 addTaskButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const taskText = taskInput.value.trim()[0].toUpperCase() + taskInput.value.trim().slice(1);
-  if (taskText === "") return;
+  const text = taskInput.value.trim();
+  if (text === "") return;
+  const taskText = text[0].toUpperCase() + text.slice(1);
 
-  const row = createRow(taskText, categorySelect.value, deadlineInput.value);
-  tbody.appendChild(row);
+  const task = {
+    id: Date.now(),
+    text: taskText,
+    category: categorySelect.value,
+    deadline: deadlineInput.value,
+    status: "progress",
+  };
+
+  tasks.push(task);
+  saveTasks();
+  addRow(task);
   updateTaskCouts();
 
   taskInput.value = "";
@@ -134,15 +157,24 @@ addTaskButton.addEventListener("click", (e) => {
 tbody.addEventListener("click", (e) => {
   const deleteButton = e.target.closest(".btn-delete");
   if (!deleteButton) return;
-  deleteButton.closest("tr").remove();
+
+  const row = deleteButton.closest("tr");
+  tasks = tasks.filter((t) => t.id !== Number(row.dataset.id));
+  saveTasks();
+
+  row.remove();
   updateTaskCouts();
 });
 
+// CHANGE STATUS
 tbody.addEventListener("change", (e) => {
-  if (e.target.matches(".status-select")) {
-    updateStatus(e.target);
-  }
-
+  const select = e.target;
+  const row = select.closest("tr");
+  const id = Number(row.dataset.id);
+  const task = tasks.find((t) => t.id === id);
+  task.status = select.value;
+  saveTasks();
+  updateStatus(select);
   updateTaskCouts();
 });
 
@@ -175,4 +207,7 @@ function updateTaskCouts() {
   document.getElementById("count-overdue").textContent = overdue;
 }
 
+for (const task of tasks) {
+  addRow(task);
+}
 updateTaskCouts();
